@@ -21,7 +21,7 @@ def timestamp(o):
 def runcmd(c, o, u):
     print >>o, '#!'
     print >>o, c
-    p = subprocess.Popen(c, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    p = subprocess.Popen(['bash', '-c', c], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     out, err = p.communicate()
     if len(out.strip()) > 0:
         if u:
